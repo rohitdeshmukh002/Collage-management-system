@@ -1,9 +1,8 @@
 // Variables for consistent colors
-$primary-color: #3f51b5; // Primary color
-$warn-color: #f44336;    // Warning color
+$primary-color: #3f51b5; 
+$warn-color: #f44336;    
 $background-color: #f9f9f9;
 
-// Toolbar styling
 mat-toolbar {
   display: flex;
   justify-content: space-between;
@@ -15,10 +14,15 @@ mat-toolbar {
 
   button {
     margin-right: 10px;
+    border: none !important;
   }
 }
 
-// Sidenav styling
+button{
+  border: none;
+  cursor: pointer;
+}
+
 mat-sidenav-container {
   height: 100vh;
 
@@ -39,10 +43,11 @@ mat-sidenav-container {
 
         mat-icon {
           margin-right: 15px;
+          color: #000 !important;
         }
 
         &.active {
-          // background-color: $primary-color;
+          background-color: rgba(0, 0, 0, 0.1);
           color: white;
           mat-icon {
             color: white;
@@ -67,7 +72,6 @@ mat-sidenav-container {
         a {
           display: flex;
           align-items: center;
-          // background-color: $primary-color;
           color: white;
           text-decoration: none;
           padding: 10px 15px;
@@ -88,7 +92,6 @@ mat-sidenav-container {
           display: flex;
           justify-content: space-between;
           align-items: center;
-          // background-color: $primary-color;
           color: rgb(0, 0, 0);
           padding: 10px;
 
@@ -109,7 +112,6 @@ mat-sidenav-container {
             margin-top: 15px;
 
             th {
-              // background-color: $primary-color;
               color: rgb(0, 0, 0);
               text-align: left;
               padding: 10px;
@@ -134,14 +136,7 @@ mat-sidenav-container {
   }
 }
 
-// Pagination styling
 mat-paginator {
-  // margin-top: 20px;
   display: flex;
   justify-content: flex-end !important;
-
-  // .mat-paginator-range-label {
-  //   font-weight: 500;
-  //   align-items: right  ;
-  // }
 }

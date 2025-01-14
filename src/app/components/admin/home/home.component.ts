@@ -13,6 +13,7 @@ import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
+import { AuthService } from '../../../service/auth.service';
 
 interface Feature {
   title: string;
@@ -49,6 +50,8 @@ interface QuickAction {
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
+
+
   quickActions: QuickAction[] = [
     { title: 'Add Student', icon: 'person_add', route: '/students/add', color: '#4CAF50' },
     { title: 'Take Attendance', icon: 'fact_check', route: '/attendance', color: '#2196F3' },
@@ -83,13 +86,13 @@ export class HomeComponent {
     }
   ];
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private authService : AuthService) {}
 
   navigate(route: string) {
     this.router.navigate([route]);
   }
 
   logOut(){
-    
+    this.authService.logout();
   }
 }

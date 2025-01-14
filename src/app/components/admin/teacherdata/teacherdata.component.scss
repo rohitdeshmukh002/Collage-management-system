@@ -18,6 +18,11 @@ mat-toolbar {
   }
 }
 
+button {
+  border: none;
+  cursor: pointer;
+}
+
 // Sidenav styling
 mat-sidenav-container {
   height: 100vh;
@@ -39,10 +44,11 @@ mat-sidenav-container {
 
         mat-icon {
           margin-right: 15px;
+          color: #000 !important;
         }
 
         &.active {
-          // background-color: $primary-color;
+          background-color: rgba(0, 0, 0, 0.1);
           color: white;
           mat-icon {
             color: white;

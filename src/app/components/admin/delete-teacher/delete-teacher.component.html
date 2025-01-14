@@ -1,0 +1,13 @@
+<div class="head">
+
+    <h2 mat-dialog-title>Confirm Deletion</h2>
+    <mat-icon (click)="onCancel()">cancel</mat-icon>
+
+</div>
+<mat-dialog-content>
+    Are you sure you want to delete {{ data.teacher.fname }} {{ data.teacher.lname }}?
+</mat-dialog-content>
+<mat-dialog-actions style="display: flex; justify-content: flex-end;">
+    <button  mat-button (click)="onCancel()">Cancel</button>
+    <button mat-raised-button color="warn" (click)="onConfirm()">Delete</button>
+</mat-dialog-actions>

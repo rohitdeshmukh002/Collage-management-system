@@ -3,8 +3,8 @@ import { Student } from '../../../models/student';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';
-import { MatDialog } from '@angular/material/dialog';
-import { Router, RouterLink } from '@angular/router';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { Router, RouterLink, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -13,11 +13,15 @@ import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
+import { StudentService } from '../../../service/student.service';
+import { AuthService } from '../../../service/auth.service';
+import { AddUpdateComponent } from '../add-update/add-update.component';
+import { DeleteStudentComponent } from '../delete-student/delete-student.component';
 
 @Component({
-  selector: 'app-studentdata',
-  standalone: true,
-  imports: [
+    selector: 'app-studentdata',
+    standalone: true,
+    imports: [
         CommonModule,
         MatInputModule,
         MatToolbarModule,
@@ -29,56 +33,118 @@ import { MatCardModule } from '@angular/material/card';
         MatPaginatorModule,
         MatTableModule,
         MatCardModule,
-        RouterLink
-  ],
-  templateUrl: './studentdata.component.html',
-  styleUrl: './studentdata.component.scss'
+        RouterModule,
+        AddUpdateComponent,
+        MatDialogModule
+    ],
+    templateUrl: './studentdata.component.html',
+    styleUrl: './studentdata.component.scss'
 })
 export class StudentdataComponent {
-  displayedColumns: string[] = ['Firstname', 'lastname', 'email', 'gender', 'actions'];
-  dataSource: MatTableDataSource<Student>;
-  
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
+    displayedColumns: string[] = ['Firstname', 'lastname', 'email', 'gender', 'actions'];
+    dataSource: MatTableDataSource<Student>;
 
-  constructor(
-    private dialog: MatDialog,
-    private router: Router
-  ) {
-    this.dataSource = new MatTableDataSource<Student>();
-  }
+    @ViewChild(MatPaginator) paginator!: MatPaginator;
+    @ViewChild(MatSort) sort!: MatSort;
 
-  ngOnInit() {
-    this.loadStudents();
-  }
-
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-  }
-
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
+    constructor(
+        private studentService: StudentService,
+        private router: Router,
+        private dialog: MatDialog,
+        private authservice: AuthService
+    ) {
+        this.dataSource = new MatTableDataSource<Student>();
     }
-  }
 
-  loadStudents() {
-    // Implement your student data loading logic here
-  }
+    ngOnInit(): void {
+        this.loadStudents();
+    }
 
-  updateStudent(student: Student) {
-    // Implement your student update logic here
-  }
+    loadStudents(): void {
+        this.studentService.getall().subscribe({
+            next: (students) => {
 
-  deleteStudent(student: Student) {
-    // Implement your student delete logic here
-  }
+                // console.log("students:");
+                // console.log(students);
 
-  logOut() {
-    // Implement your logout logic here
-  }
+                this.dataSource = new MatTableDataSource(students);
+                this.dataSource.paginator = this.paginator;
+                this.dataSource.sort = this.sort;
+            },
+            error: (error) => {
+                console.error('Error loading students:', error);
+                // You might want to add error handling/notification here
+            }
+        });
+    }
+
+    applyFilter(event: Event): void {
+        const filterValue = (event.target as HTMLInputElement).value;
+        this.dataSource.filter = filterValue.trim().toLowerCase();
+
+        if (this.dataSource.paginator) {
+            this.dataSource.paginator.firstPage();
+        }
+    }
+
+
+    // Add these methods:
+    addStudent(): void {
+        const dialogRef = this.dialog.open(AddUpdateComponent, {
+            width: '500px',
+            data: { student: null },
+            disableClose: true // Prevents closing by clicking outside
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            if (result === true) {
+                this.loadStudents();
+            }
+        });
+    }
+
+    updateStudent(student: Student): void {
+        const dialogRef = this.dialog.open(AddUpdateComponent, {
+            width: '500px',
+            data: { student },
+            disableClose: true
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            if (result === true) {
+                this.loadStudents();
+            }
+        });
+    }
+
+    deleteStudent(student: Student): void {
+        const dialogRef = this.dialog.open(DeleteStudentComponent, {
+            data: { student },
+            width: '400px',
+        });
+
+        dialogRef.afterClosed().subscribe((result) => {
+            if (result) {
+                this.loadStudents();
+            }
+        });
+    }
+
+    openDialog(student: Student | null = null): void {
+        const dialogRef = this.dialog.open(AddUpdateComponent, {
+            width: '400px',
+            data: { student }
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            if (result) {
+                // Refresh data or handle success
+            }
+        });
+    }
+
+    logOut(): void {
+        this.authservice.logout();
+        this.router.navigate(['/login']);
+    }
 }

@@ -11,7 +11,7 @@
 </mat-toolbar>
 
 <mat-sidenav-container>
-  <mat-sidenav #sidenav mode="side" opened>
+  <mat-sidenav #sidenav mode="side" >
     <mat-nav-list>
       <a mat-list-item routerLink="/home" >
         <mat-icon>dashboard</mat-icon>
@@ -37,10 +37,10 @@
             <h1 class="mat-display-2">Welcome to StudentHub</h1>
             <p class="mat-h2">Empowering Education Through Smart Management</p>
             <div class="hero-actions">
-              <button mat-raised-button color="primary" (click)="navigate('/dashboard')">
+              <button mat-raised-button color="primary" (click)="navigate('/home')">
                 Go to Dashboard
               </button>
-              <button mat-stroked-button color="primary" (click)="navigate('/students')">
+              <button mat-stroked-button color="primary" (click)="navigate('/student-data')">
                 View All Students
               </button>
             </div>
