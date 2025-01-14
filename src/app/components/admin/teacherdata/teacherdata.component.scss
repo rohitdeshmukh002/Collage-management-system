@@ -1,0 +1,147 @@
+// Variables for consistent colors
+$primary-color: #3f51b5; // Primary color
+$warn-color: #f44336;    // Warning color
+$background-color: #f9f9f9;
+
+// Toolbar styling
+mat-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .toolbar-spacer {
+    flex: 1;
+  }
+
+  button {
+    margin-right: 10px;
+  }
+}
+
+// Sidenav styling
+mat-sidenav-container {
+  height: 100vh;
+
+  mat-sidenav {
+    width: 250px;
+    background-color: $background-color;
+    mat-nav-list {
+      a {
+        display: flex;
+        align-items: center;
+        padding: 10px 20px;
+        text-decoration: none;
+        color: #000;
+        font-weight: 500;
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        mat-icon {
+          margin-right: 15px;
+        }
+
+        &.active {
+          // background-color: $primary-color;
+          color: white;
+          mat-icon {
+            color: white;
+          }
+        }
+      }
+    }
+  }
+
+  mat-sidenav-content {
+    padding: 20px;
+    background-color: $background-color;
+
+    .content-container {
+      margin-bottom: 30px;
+
+      .add {
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: flex-end;
+
+        a {
+          display: flex;
+          align-items: center;
+          // background-color: $primary-color;
+          color: white;
+          text-decoration: none;
+          padding: 10px 15px;
+          border-radius: 5px;
+          font-weight: 500;
+
+          mat-icon {
+            margin-right: 5px;
+          }
+
+        }
+      }
+
+      mat-card {
+        padding: 15px;
+
+        mat-card-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          // background-color: $primary-color;
+          color: rgb(0, 0, 0);
+          padding: 10px;
+
+          mat-card-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+          }
+        }
+
+        mat-card-content {
+          mat-form-field {
+            width: 100%;
+            margin-bottom: 15px;
+          }
+
+          table {
+            width: 100%;
+            margin-top: 15px;
+
+            th {
+              // background-color: $primary-color;
+              color: rgb(0, 0, 0);
+              text-align: left;
+              padding: 10px;
+            }
+
+            td {
+              padding: 10px;
+              text-align: left;
+            }
+
+            tr:hover {
+              background-color: rgba(0, 0, 0, 0.05);
+            }
+
+            button {
+              margin: 0 5px;
+            }
+          }
+        }
+      }
+    }   
+  }
+}
+
+// Pagination styling
+mat-paginator {
+  // margin-top: 20px;
+  display: flex;
+  justify-content: flex-end !important;
+
+  // .mat-paginator-range-label {
+  //   font-weight: 500;
+  //   align-items: right  ;
+  // }
+}
