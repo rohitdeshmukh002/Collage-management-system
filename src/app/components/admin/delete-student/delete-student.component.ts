@@ -21,19 +21,16 @@ export class DeleteStudentComponent {
     public dialogRef: MatDialogRef<DeleteStudentComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { student: Student },
     private studentService: StudentService,
-    // private snackBar: MatSnackBar
   ) {}
 
   onConfirm(): void {
     this.studentService.delete(this.data.student).then(
       () => {
-        // alert('Student deleted successfully');
-        this.dialogRef.close(true); // Pass true to indicate success
+        this.dialogRef.close(true);
       },
       (error) => {
         console.error('Error deleting student:', error);
-        // alert('Could not delete student');
-        this.dialogRef.close(false); // Pass false to indicate failure
+        this.dialogRef.close(false); 
       }
     );
   }  

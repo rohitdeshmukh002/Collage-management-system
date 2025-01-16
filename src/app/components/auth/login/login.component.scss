@@ -1,164 +1,304 @@
+@mixin mobile-small {
+  @media (max-width: 320px) { @content; }
+}
+
+@mixin mobile {
+  @media (max-width: 480px) { @content; }
+}
+
+@mixin tablet {
+  @media (min-width: 481px) and (max-width: 768px) { @content; }
+}
+
+@mixin laptop {
+  @media (min-width: 769px) and (max-width: 1024px) { @content; }
+}
+
 :host {
-    display: block;
-    height: 100%;
+  display: block;
+  height: 100%;
+}
+
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+              url('/') no-repeat center center fixed;
+  background-size: cover;
+  // padding: 20px;
+
+  @include mobile {
+    // padding: 15px;
   }
-  
-  .login-page {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-                url('/') no-repeat center center fixed;
-    background-size: cover;
+
+  @include mobile-small {
+    padding: 10px;
+  }
+}
+
+.login-container {
+  width: 90%;
+  max-width: 400px;
+  margin: auto;
+  // padding: 0 15px;
+
+  @include mobile {
+    max-width: 100%;
+    padding: 0 10px;
+  }
+}
+
+.login-card {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.9);
+  padding: 30px;
+  border-radius: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  @include mobile {
     // padding: 20px;
   }
-  
-  .login-container {
-    width: 100%;
-    max-width: 400px;
-    margin: auto;
+
+  @include mobile-small {
+    padding: 15px;
+    border-radius: 8px;
   }
-  
-  .login-card {
-    backdrop-filter: blur(10px);
-    background: rgba(255, 255, 255, 0.9);
-    padding: 24px;
-    border-radius: 10px;
-    width: 100%;
-    box-sizing: border-box;
-  }
-  
-  .login-form {
-    width: 100%;
-  }
-  
-  .form-field-container {
-    width: 100%;
+}
+
+.login-form {
+  width: 100%;
+}
+
+.form-field-container {
+  width: 100%;
+  margin-bottom: 20px;
+
+  @include mobile {
     margin-bottom: 16px;
   }
-  
-  .full-width {
-    width: 100%;
-    min-width: 250px;
+}
+
+.full-width {
+  width: 100%;
+  min-width: unset;
+}
+
+mat-form-field {
+  width: 100%;
+  display: block;
+
+  @include mobile {
+    font-size: 14px;
   }
-  
-  mat-form-field {
-    width: 100%;
-    display: block;
+}
+
+mat-card-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+  text-align: center;
+
+  @include mobile {
+    margin-bottom: 20px;
   }
-  
-  mat-card-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 24px;
-    text-align: center;
-  }
-  
-  .mat-mdc-card-header {
-    padding: 0;
-  }
-  
-  .mat-mdc-card-content {
-    padding: 0;
-  }
-  
-  mat-card-title {
+}
+
+.mat-mdc-card-header {
+  padding: 0;
+}
+
+.mat-mdc-card-content {
+  padding: 0;
+}
+
+mat-card-title {
+  font-size: 28px;
+  margin-bottom: 12px !important;
+  color: #333;
+
+  @include mobile {
     font-size: 24px;
     margin-bottom: 8px !important;
-    color: #333;
   }
-  
-  mat-card-subtitle {
-    color: #666;
+
+  @include mobile-small {
+    font-size: 20px;
   }
-  
-  .social-login {
-    display: flex;
-    flex-direction: column;
+}
+
+mat-card-subtitle {
+  color: #666;
+  font-size: 16px;
+
+  @include mobile {
+    font-size: 14px;
+  }
+}
+
+.social-login {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 30px;
+  width: 100%;
+
+  @include mobile {
     gap: 12px;
     margin-bottom: 24px;
-    width: 100%;
   }
-  
-  .social-btn {
-    width: 100%;
+}
+
+.social-btn {
+  width: 100%;
+  height: 44px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+
+  @include mobile {
     height: 40px;
     padding: 0 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     gap: 8px;
-    border: 1px solid #ddd;
+    font-size: 14px;
   }
-  
-  .social-icon {
+
+  &:hover {
+    background-color: #f5f5f5;
+  }
+}
+
+.social-icon {
+  width: 24px;
+  height: 24px;
+
+  @include mobile {
     width: 20px;
     height: 20px;
   }
-  
-  .facebook-icon {
-    color: #1877f2;
-  }
-  
-  .divider {
-    display: flex;
-    align-items: center;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  margin: 30px 0;
+  width: 100%;
+
+  @include mobile {
     margin: 24px 0;
-    width: 100%;
   }
-  
-  .divider-line {
-    flex: 1;
-    height: 1px;
-    background: #ddd;
-  }
-  
-  .divider-text {
+}
+
+.divider-line {
+  flex: 1;
+  height: 1px;
+  background: #ddd;
+}
+
+.divider-text {
+  padding: 0 20px;
+  color: #666;
+  font-size: 14px;
+
+  @include mobile {
     padding: 0 16px;
-    color: #666;
-    font-size: 14px;
+    font-size: 12px;
   }
-  
-  .remember-forgot {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 24px;
-    width: 100%;
+}
+
+.remember-forgot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  width: 100%;
+  flex-wrap: wrap;
+  gap: 10px;
+
+  @include mobile {
+    margin-bottom: 20px;
   }
-  
-  .forgot-link {
-    color: #666;
-    text-decoration: none;
-    font-size: 14px;
+}
+
+.forgot-link {
+  color: #666;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s ease;
+
+  @include mobile {
+    font-size: 13px;
   }
-  
-  .button-container {
-    width: 100%;
+
+  &:hover {
+    color: #333;
+  }
+}
+
+.button-container {
+  width: 100%;
+  margin-bottom: 20px;
+
+  @include mobile {
     margin-bottom: 16px;
   }
-  
-  .login-button {
-    width: 100%;
+}
+
+.login-button {
+  width: 100%;
+  height: 44px;
+  font-size: 16px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+
+  @include mobile {
     height: 40px;
-    font-size: 16px;
+    font-size: 15px;
   }
-  
-  .redirect-links {
-    text-align: center;
+
+  @include mobile-small {
+    font-size: 14px;
+  }
+}
+
+.redirect-links {
+  text-align: center;
+  margin-top: 30px;
+  color: #666;
+  font-size: 14px;
+
+  @include mobile {
     margin-top: 24px;
-    color: #666;
+    font-size: 13px;
   }
-  
-  mat-spinner {
-    display: inline-block;
-    margin-right: 8px;
-  }
-  
-  @media (max-width: 480px) {
-    .login-card {
-      padding: 16px;
+
+  a {
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: #000;
     }
   }
+}
+
+mat-spinner {
+  display: inline-block;
+  margin-right: 8px;
+
+  @include mobile {
+    margin-right: 6px;
+    transform: scale(0.8);
+  }
+}

@@ -59,7 +59,6 @@ export class TeacherService {
       salary: teacher.salary,
       gender: teacher.gender,
       email: teacher.email,
-      password: teacher.password
     });
   }
 

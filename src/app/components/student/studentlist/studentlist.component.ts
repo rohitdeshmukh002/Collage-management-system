@@ -13,6 +13,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
+import { StudentService } from '../../../service/student.service';
 
 @Component({
   selector: 'app-studentlist',
@@ -44,7 +45,8 @@ export class StudentlistComponent {
   
     constructor(
       private dialog: MatDialog,
-      private router: Router
+      private router: Router,
+      private studentService: StudentService
     ) {
       this.dataSource = new MatTableDataSource<Student>();
     }
@@ -67,20 +69,22 @@ export class StudentlistComponent {
       }
     }
   
-    loadStudents() {
-      // Implement your student data loading logic here
-    }
-  
-    updateStudent(student: Student) {
-      // Implement your student update logic here
-    }
-  
-    deleteStudent(student: Student) {
-      // Implement your student delete logic here
-    }
-  
-    logOut() {
-      // Implement your logout logic here
-    }
+    loadStudents(): void {
+      this.studentService.getall().subscribe({
+          next: (students) => {
+
+              // console.log("students:");
+              // console.log(students);
+
+              this.dataSource = new MatTableDataSource(students);
+              this.dataSource.paginator = this.paginator;
+              this.dataSource.sort = this.sort;
+          },
+          error: (error) => {
+              console.error('Error loading students:', error);
+              // You might want to add error handling/notification here
+          }
+      });
+  }
   }
 

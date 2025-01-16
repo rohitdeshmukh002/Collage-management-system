@@ -1,8 +1,9 @@
 // Variables for consistent colors
-$primary-color: #3f51b5; 
-$warn-color: #f44336;    
+$primary-color: #3f51b5; // Primary color
+$warn-color: #f44336;    // Warning color
 $background-color: #f9f9f9;
 
+// Toolbar styling
 mat-toolbar {
   display: flex;
   justify-content: space-between;
@@ -14,15 +15,16 @@ mat-toolbar {
 
   button {
     margin-right: 10px;
-    border: none !important;
   }
 }
 
-button{
+button {
   border: none;
   cursor: pointer;
 }
 
+
+// Sidenav styling
 mat-sidenav-container {
   height: 100vh;
 
@@ -30,16 +32,23 @@ mat-sidenav-container {
     width: 250px;
     background-color: $background-color;
     mat-nav-list {
+      .mat-mdc-list-item:not(.active) {
+        &::before, &::after {
+          background-color: transparent !important;
+        }
+        
+        &:hover {
+          &::before, &::after {
+            background-color: transparent !important;
+          }
+        }
+      }
       a {
-        display: flex;
+        display: flex ;
         align-items: center;
         padding: 10px 20px;
         text-decoration: none;
-        color: #000;
         font-weight: 500;
-        &:hover {
-          background-color: rgba(0, 0, 0, 0.1);
-        }
 
         mat-icon {
           margin-right: 15px;
@@ -47,16 +56,14 @@ mat-sidenav-container {
         }
 
         &.active {
-          background-color: rgba(0, 0, 0, 0.1);
-          color: white;
-          mat-icon {
-            color: white;
-          }
+          background-color: rgba(0, 0, 0, 0.1) !important;
+          // color: white;
+
         }
       }
     }
   }
-
+}
   mat-sidenav-content {
     padding: 20px;
     background-color: $background-color;
@@ -72,6 +79,7 @@ mat-sidenav-container {
         a {
           display: flex;
           align-items: center;
+          // background-color: $primary-color;
           color: white;
           text-decoration: none;
           padding: 10px 15px;
@@ -92,6 +100,7 @@ mat-sidenav-container {
           display: flex;
           justify-content: space-between;
           align-items: center;
+          // background-color: $primary-color;
           color: rgb(0, 0, 0);
           padding: 10px;
 
@@ -112,6 +121,7 @@ mat-sidenav-container {
             margin-top: 15px;
 
             th {
+              // background-color: $primary-color;
               color: rgb(0, 0, 0);
               text-align: left;
               padding: 10px;
@@ -134,9 +144,11 @@ mat-sidenav-container {
       }
     }   
   }
-}
 
+
+// Pagination styling
 mat-paginator {
   display: flex;
   justify-content: flex-end !important;
+
 }

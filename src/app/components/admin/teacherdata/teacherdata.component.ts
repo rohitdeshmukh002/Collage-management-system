@@ -92,24 +92,24 @@ import { DeleteTeacherComponent } from '../delete-teacher/delete-teacher.compone
       });
     }
 
-    updateEmployee(teacher: Teacher) {
+    // updateEmployee(teacher: Teacher) {
 
-      const dialogRef = this.dialog.open(DialogComponent, {
-        width: '400px',
-        data: teacher,
-      });
+    //   const dialogRef = this.dialog.open(DialogComponent, {
+    //     width: '400px',
+    //     data: { teacher },
+    //   });
     
-      dialogRef.afterClosed().subscribe((result) => {
-        if (result) {
-          this.teacherService.update(result).then(() => {
-            this.loadEmployees(); // Reload the updated data
-          }).catch((error) => {
-            console.error('Error updating teacher:', error);
-          });
-        }
-      });
+    //   dialogRef.afterClosed().subscribe((result) => {
+    //     if (result) {
+    //       this.teacherService.update(result).then(() => {
+    //         this.loadEmployees(); // Reload the updated data
+    //       }).catch((error) => {
+    //         console.error('Error updating teacher:', error);
+    //       });
+    //     }
+    //   });
       
-    }
+    // }
 
         addteacher(): void {
             const dialogRef = this.dialog.open(DialogComponent, {

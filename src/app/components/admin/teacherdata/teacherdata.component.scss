@@ -31,6 +31,17 @@ mat-sidenav-container {
     width: 250px;
     background-color: $background-color;
     mat-nav-list {
+      .mat-mdc-list-item:not(.active) {
+        &::before, &::after {
+          background-color: transparent !important;
+        }
+        
+        &:hover {
+          &::before, &::after {
+            background-color: transparent !important;
+          }
+        }
+      }
       a {
         display: flex;
         align-items: center;
@@ -38,9 +49,6 @@ mat-sidenav-container {
         text-decoration: none;
         color: #000;
         font-weight: 500;
-        &:hover {
-          background-color: rgba(0, 0, 0, 0.1);
-        }
 
         mat-icon {
           margin-right: 15px;
@@ -48,16 +56,14 @@ mat-sidenav-container {
         }
 
         &.active {
-          background-color: rgba(0, 0, 0, 0.1);
+          background-color: rgba(0, 0, 0, 0.1) !important;
           color: white;
-          mat-icon {
-            color: white;
-          }
+          
         }
       }
     }
   }
-
+}
   mat-sidenav-content {
     padding: 20px;
     background-color: $background-color;
@@ -138,7 +144,7 @@ mat-sidenav-container {
       }
     }   
   }
-}
+
 
 // Pagination styling
 mat-paginator {
