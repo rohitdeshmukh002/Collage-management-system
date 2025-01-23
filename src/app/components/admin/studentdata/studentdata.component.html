@@ -1,33 +1,6 @@
-<mat-toolbar color="primary">
-    <button mat-icon-button (click)="sidenav.toggle()">
-        <mat-icon>menu</mat-icon>
-    </button>
-    <span>School Management</span>
-    <span class="toolbar-spacer"></span>
-    <button mat-raised-button color="warn" (click)="logOut()">
-        <mat-icon>logout</mat-icon>
-        Logout
-    </button>
-</mat-toolbar>
 
+<!-- @if(sharedService.isClickedRouteVisible){ -->
 <mat-sidenav-container>
-    <mat-sidenav #sidenav mode="side" opened>
-        <mat-nav-list>
-            <a mat-list-item routerLink="/home" routerLinkActive="active">
-                <mat-icon>dashboard</mat-icon>
-                <span class="nav-link-text">Dashboard</span>
-            </a>
-            <a mat-list-item routerLink="/teacher-data" routerLinkActive="active">
-                <mat-icon>person</mat-icon>
-                <span class="nav-link-text">Teacher</span>
-            </a>
-            <a mat-list-item routerLink="/student-data" routerLinkActive="active">
-                <mat-icon>school</mat-icon>
-                <span class="nav-link-text">Student</span>
-            </a>
-        </mat-nav-list>
-    </mat-sidenav>
-
     <mat-sidenav-content>
         <div class="content-container">
             <div class="add">
@@ -64,11 +37,6 @@
                             <td mat-cell *matCellDef="let element"> {{element.email}} </td>
                         </ng-container>
 
-                        <!-- <ng-container matColumnDef="userType">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> User Type </th>
-              <td mat-cell *matCellDef="let element"> {{element.userType}} </td>
-            </ng-container> -->
-
                         <ng-container matColumnDef="gender">
                             <th mat-header-cell *matHeaderCellDef mat-sort-header> Gender </th>
                             <td mat-cell *matCellDef="let element"> {{element.gender}} </td>
@@ -97,3 +65,4 @@
         </div>
     </mat-sidenav-content>
 </mat-sidenav-container>
+<!-- } -->

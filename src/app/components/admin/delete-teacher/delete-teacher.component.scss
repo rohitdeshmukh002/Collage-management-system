@@ -1,16 +1,18 @@
 .head{
     display: flex;
     justify-content: space-between;
+    padding: 0px 10px;
 }
 
 mat-icon{
-    padding: 25px 20px;
+    padding: 25px 00px;
     cursor: pointer;
 }
 
 h2 {
     padding-left: 20px;
-    margin-bottom: 0px;
+    margin-bottom: 10px;
+
 }
 
 .mat-mdc-dialog-actions{

@@ -31,7 +31,7 @@
                     <mat-form-field appearance="outline" class="full-width">
                         <mat-label>Email</mat-label>
                         <input matInput formControlName="email" type="email">
-                        <mat-icon matSuffix>email</mat-icon>
+                        <mat-icon matSuffix style="padding: 0px 0px !important;">email</mat-icon>
                         <mat-error *ngIf="loginForm.get('email')?.hasError('required')">
                             Email is required
                         </mat-error>

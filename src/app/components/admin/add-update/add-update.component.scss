@@ -1,15 +1,16 @@
 .form-container {
-  padding: 1rem;
-  max-width: 600px;
+  // padding: 1rem;
+  max-width: 500px;
   // margin: 2rem auto;
 
   .head{
     display: flex;
     justify-content: space-between;
+    padding: 0px 10px;
   }
 
   mat-icon{
-    padding: 25px 20px;
+    padding: 25px 0px;
   }
   
   mat-card {

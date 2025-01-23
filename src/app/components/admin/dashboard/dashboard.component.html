@@ -1,0 +1,91 @@
+<!-- @if(sharedService.isClickedRouteVisible){ -->
+<mat-sidenav-container>
+<mat-sidenav-content>
+    <div class="home-container">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <mat-card class="hero-card">
+                <mat-card-content>
+                    <h1 class="mat-display-2">Welcome to StudentHub</h1>
+                    <p class="mat-h2">Empowering Education Through Smart Management</p>
+                    <div class="hero-actions">
+                        <button mat-raised-button color="primary" (click)="navigate('/dashboard')">
+                            Go to Dashboard
+                        </button>
+                        <button mat-stroked-button color="primary" (click)="navigate('/home')">
+                            View All Students
+                        </button>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </section>
+
+        <!-- Quick Actions -->
+        <section class="quick-actions">
+            <h2 class="mat-h1 section-title">Quick Actions</h2>
+            <div class="actions-grid">
+                <mat-card *ngFor="let action of quickActions" class="action-card" (click)="navigate(action.route)"
+                    [ngStyle]="{'border-top': '4px solid ' + action.color}">
+                    <mat-card-content>
+                        <mat-icon [ngStyle]="{'color': action.color}">{{action.icon}}</mat-icon>
+                        <h3 class="mat-h2">{{action.title}}</h3>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features">
+            <h2 class="mat-h1 section-title">Key Features</h2>
+            <div class="features-grid">
+                <mat-card *ngFor="let feature of features" class="feature-card">
+                    <mat-card-header>
+                        <mat-icon mat-card-avatar>{{feature.icon}}</mat-icon>
+                        <mat-card-title>{{feature.title}}</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <p>{{feature.description}}</p>
+                    </mat-card-content>
+                    <mat-card-actions>
+                        <button mat-button color="primary" (click)="navigate(feature.route)">
+                            Learn More
+                        </button>
+                    </mat-card-actions>
+                </mat-card>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats">
+            <h2 class="mat-h1 section-title">System Overview</h2>
+            <div class="stats-grid">
+                <mat-card class="stat-card">
+                    <mat-card-content>
+                        <div class="stat-value">1,234</div>
+                        <div class="stat-label">Total Students</div>
+                    </mat-card-content>
+                </mat-card>
+                <mat-card class="stat-card">
+                    <mat-card-content>
+                        <div class="stat-value">56</div>
+                        <div class="stat-label">Active Courses</div>
+                    </mat-card-content>
+                </mat-card>
+                <mat-card class="stat-card">
+                    <mat-card-content>
+                        <div class="stat-value">89%</div>
+                        <div class="stat-label">Attendance Rate</div>
+                    </mat-card-content>
+                </mat-card>
+                <mat-card class="stat-card">
+                    <mat-card-content>
+                        <div class="stat-value">45</div>
+                        <div class="stat-label">Faculty Members</div>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </section>
+    </div>
+</mat-sidenav-content>
+</mat-sidenav-container>
+<!-- } -->

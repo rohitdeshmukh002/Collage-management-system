@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, inject, ViewChild } from '@angular/core';
 import { Student } from '../../../models/student';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
@@ -17,6 +17,7 @@ import { StudentService } from '../../../service/student.service';
 import { AuthService } from '../../../service/auth.service';
 import { AddUpdateComponent } from '../add-update/add-update.component';
 import { DeleteStudentComponent } from '../delete-student/delete-student.component';
+import { SharedService } from '../../../service/shared.service';
 
 @Component({
     selector: 'app-studentdata',
@@ -41,6 +42,9 @@ import { DeleteStudentComponent } from '../delete-student/delete-student.compone
     styleUrl: './studentdata.component.scss'
 })
 export class StudentdataComponent {
+
+    public sharedService = inject(SharedService)
+
     displayedColumns: string[] = ['Firstname', 'lastname', 'email', 'gender', 'actions'];
     dataSource: MatTableDataSource<Student>;
 
@@ -138,13 +142,9 @@ export class StudentdataComponent {
 
         dialogRef.afterClosed().subscribe(result => {
             if (result) {
-                // Refresh data or handle success
+                this.loadStudents();
             }
         });
     }
 
-    logOut(): void {
-        this.authservice.logout();
-        this.router.navigate(['/login']);
-    }
 }

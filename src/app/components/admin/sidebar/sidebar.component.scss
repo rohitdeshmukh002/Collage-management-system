@@ -1,0 +1,91 @@
+$primary-color: #3f51b5;
+$warn-color: #f44336;
+$background-color: white;
+
+// Breakpoints
+$mobile: 576px;
+$tablet: 768px;
+$desktop: 992px;
+
+mat-toolbar {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    padding: 0 16px;
+    width: 100%;
+
+    .toolbar-spacer {
+        flex: 1;
+    }
+
+    button {
+        margin-right: 5px;
+        border: none;
+        cursor: pointer;
+    }
+
+    @media (max-width: $mobile) {
+        padding: 0 8px;
+
+        span {
+            font-size: 1rem;
+        }
+
+        button {
+            margin-right: 5px;
+        }
+    }
+}
+
+:host mat-sidenav-container {
+    height: 100vh;
+
+    mat-sidenav {
+        width: 340px;
+        background-color: $background-color;
+
+        mat-nav-list {
+            .mat-mdc-list-item:not(.active) {
+
+                &::before,
+                &::after {
+                    background-color: transparent !important;
+                }
+
+                &:hover {
+
+                    &::before,
+                    &::after {
+                        background-color: transparent !important;
+                    }
+                }
+            }
+
+            a {
+                display: flex;
+                align-items: center;
+                padding: 10px 20px;
+                text-decoration: none;
+                color: #000;
+                font-weight: 500;
+                cursor: pointer;
+
+                mat-icon {
+                    margin-right: 15px;
+                    color: #000 !important;
+                }
+
+                &.active {
+                    background-color: rgba(0, 0, 0, 0.1) !important;
+                    color: white;
+                }
+            }
+        }
+    }
+}
+
+:host::ng-deep .mat-drawer {
+    display: block !important;
+    transform: translate3d(0%, 0, 0) !important;
+}

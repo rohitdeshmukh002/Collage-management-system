@@ -1,0 +1,62 @@
+<div style="height: 100%; width: 100%;">
+    <!-- @if(isSideBarVisible){ -->
+    <mat-toolbar color="primary" style="height: 64px;">
+        <button mat-icon-button (click)="sharedService.toggleSidebar()">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <span>School Management</span>
+        <!-- @if(sharedService.isSideBarVisible){
+        <span>School Management</span>
+        } -->
+    </mat-toolbar>
+    <mat-sidenav-container style="height: calc(100% - 64px);">
+        <mat-sidenav>
+            <mat-nav-list style="display: flex; flex-direction: column;">
+                <a mat-list-item (click)="sharedService.navigate(0)"
+                    [ngStyle]="{'background-color':sharedService.index === 0? 'rgba(0, 0, 0, 0.1)': ''}"
+                    style="visibility: visible !important;">
+                    <mat-icon>dashboard</mat-icon>
+                    <span class="nav-link-text">Dashboard</span>
+                </a>
+                <a mat-list-item (click)="sharedService.navigate(1)"
+                    [ngStyle]="{'background-color':sharedService.index === 1? 'rgba(0, 0, 0, 0.1)': ''}"
+                    style="visibility: visible !important;">
+                    <mat-icon>person</mat-icon>
+                    <span class="nav-link-text">Teacher</span>
+                </a>
+                <a mat-list-item (click)="sharedService.navigate(2)"
+                    [ngStyle]="{'background-color':sharedService.index === 2? 'rgba(0, 0, 0, 0.1)': ''}"
+                    style="visibility: visible !important;">
+                    <mat-icon>school</mat-icon>
+                    <span class="nav-link-text">Student</span>
+                </a>
+            </mat-nav-list>
+        </mat-sidenav>
+    </mat-sidenav-container>
+    @if(sharedService.isSideBarVisible){
+    <mat-sidenav-container style="height: calc(100% - 64px);">
+        <!-- <mat-sidenav>
+            <mat-nav-list style="display: flex; flex-direction: column;">
+                <a mat-list-item (click)="sharedService.navigate(0)"
+                    [ngStyle]="{'background-color':sharedService.index === 0? 'rgba(0, 0, 0, 0.1)': ''}"
+                    style="visibility: visible !important;">
+                    <mat-icon>dashboard</mat-icon>
+                    <span class="nav-link-text">Dashboard</span>
+                </a>
+                <a mat-list-item (click)="sharedService.navigate(1)"
+                    [ngStyle]="{'background-color':sharedService.index === 1? 'rgba(0, 0, 0, 0.1)': ''}"
+                    style="visibility: visible !important;">
+                    <mat-icon>person</mat-icon>
+                    <span class="nav-link-text">Teacher</span>
+                </a>
+                <a mat-list-item (click)="sharedService.navigate(2)"
+                    [ngStyle]="{'background-color':sharedService.index === 2? 'rgba(0, 0, 0, 0.1)': ''}"
+                    style="visibility: visible !important;">
+                    <mat-icon>school</mat-icon>
+                    <span class="nav-link-text">Student</span>
+                </a>
+            </mat-nav-list>
+        </mat-sidenav> -->
+    </mat-sidenav-container>
+    }
+</div>
